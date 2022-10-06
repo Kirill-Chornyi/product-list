@@ -46,7 +46,7 @@ const productId = useSelector(state=>state.toggle.productId)
           </svg>
           <form className='edit-form'>
             <div>
-              <label htmlFor="input1">Name:  </label> <input name="name" type="text" id="input1" onChange={()=>{handleChange ( document.querySelector("#input1").name, document.querySelector("#input1").value)}}/> 
+              <label htmlFor="input1">Name:  </label> <input name="name" type="text" placeholder="must be" id="input1" onChange={()=>{handleChange ( document.querySelector("#input1").name, document.querySelector("#input1").value)}}/> 
             </div>
 
             <div>
@@ -66,7 +66,7 @@ const productId = useSelector(state=>state.toggle.productId)
             </div>
 
             <div>
-              <label htmlFor="input2">Image URL:  </label> <input name="imageUrl" type="text" id="input2" onChange={(event)=>{handleChange ( document.querySelector("#input2").name, event.target.value)}}/>
+              <label htmlFor="input2">Image URL:  </label> <input name="imageUrl" type="text" placeholder="must be" id="input2" onChange={(event)=>{handleChange ( document.querySelector("#input2").name, event.target.value)}}/>
             </div>
         
           <div className='edit-button-container'>

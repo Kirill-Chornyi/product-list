@@ -25,7 +25,7 @@ export const toggleSlice = createSlice({
         },
         toggleAdd:(state, action) => { 
             state.isAdd = !state.isAdd;
-            state.productId = state.products.at(-1).id + 1;   
+            state.productId = state.products.length + 1;   
 },
         toggleEdit: (state, action) => {
             state.productId = action.payload;

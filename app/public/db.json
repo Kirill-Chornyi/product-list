@@ -25,9 +25,12 @@
         "height": 200
       },
       "weight": "100g",
-      "comments": ["CommentModel",
-      "CommentModel", "CommentModel",
-      "CommentModel"]
+      "comments": [
+        "CommentModel",
+        "CommentModel",
+        "CommentModel",
+        "CommentModel"
+      ]
     },
     {
       "id": 3,
@@ -54,6 +57,20 @@
       },
       "weight": "800g",
       "comments": []
+    },
+    {
+      "id": 5,
+      "imageUrl": "https://www.maxpremiumburgers.pl/globalassets/images/pl-menu/burgery/_0007_frisco-burger.jpg?width=1160&sharpen=5&sigma=1,4&threshold=0",
+      "name": "Burger",
+      "count": "40",
+      "size": {
+        "width": 0,
+        "height": 0
+      },
+      "weight": "720g",
+      "comments": [],
+      "size.width": "50",
+      "size.height": "50"
     }
   ],
   "comments": [

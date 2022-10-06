@@ -67,22 +67,25 @@ function App() {
   }
 
   async function addAPI(updateProduct) {
-    const response = await
-    fetch('http://localhost:3001/products', {method: 'POST', body: JSON.stringify(updateProduct), 
-    headers: {
-      'Content-Type': 'application/json'
-    }})
-    .then((res) =>{
-      return res.json();
-    })
-    .then((data) => {
-      setProductsAction(data)
-    })
-    .catch((err) => {
-      console.warn(err);
-      alert("Не удалось получить информацию с сервера")
-    })
-    return await response
+    if (updateProduct.name==="" || updateProduct.imageUrl==="") {
+      toggleAddAction()
+    } 
+    else {const response = await
+      fetch('http://localhost:3001/products', {method: 'POST', body: JSON.stringify(updateProduct), 
+      headers: {
+        'Content-Type': 'application/json'
+      }})
+      .then((res) =>{
+        return res.json();
+      })
+      .then((data) => {
+        setProductsAction(data)
+      })
+      .catch((err) => {
+        console.warn(err);
+        alert("Не удалось получить информацию с сервера")
+      })
+      return await response}
   }
 
 
