@@ -1,0 +1,118 @@
+@import "null.scss";
+
+.App{margin: 40px;}
+.product-item {display: flex;
+    align-items: center;
+    justify-content:space-between;
+    cursor: pointer;
+
+    .product-item-information {
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+        flex-grow: 1;
+    }
+
+    & button{display: block;
+        width: 100%;}
+    & .button-container{display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height:40px;
+        width: 50px;
+        margin: 0 20px;
+        }}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: all 0.5s ease-in-out;
+    }
+
+    .modal {
+        background-color: #fff;
+        width: 70%;
+        max-width: 500px;
+        max-height: 600px;
+        padding: 40px 30px;
+        border-radius: 10px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p {font-size: 18px;
+        line-height: 24px;}
+        svg {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            height: 24px;
+            width: 24px;
+            opacity: 0.3;
+            cursor: pointer;}
+        .delete-label, .edit-label{
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .delete-button-container{
+            button {display: block;
+                width: 150px;
+                height: 40px;
+                font-size: 22px;}
+            margin-top: 40px;
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+        }}
+.edit-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 20px;
+    div {display:flex;
+    justify-content: space-between;
+    margin:10px;}
+    input{border: black solid 1px;
+        width: 70%;
+        font-size: 16px;
+        }
+    .edit-button-container{
+            button {display: block;
+                width: 150px;
+                height: 40px;
+                font-size: 22px;}
+            margin-top: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+}
+
+.add-product-button{display: block;
+margin: 0 auto;
+font-size: 20px;
+height: 40px;
+width: 200px;}
+
+.product-button-container {
+    button{display: block;
+    width: 150px;
+    height: 40px;}
+    margin: 10px;
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex{display:flex;
+    & * {margin: 5px 0;}
+}

@@ -1,0 +1,67 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "imageUrl": "https://fruit-time.ua/images/cache/products/36/pomidor-rozevii-500x500.jpeg",
+      "name": "Tomato",
+      "count": "8",
+      "size": {
+        "width": 200,
+        "height": 200
+      },
+      "weight": "200g",
+      "comments": [
+        "CommentModel",
+        "CommentModel"
+      ]
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://images.heb.com/is/image/HEBGrocery/000319432?fit=constrain,1&wid=800&hei=800&fmt=jpg&qlt=85,0&resMode=sharp2&op_usm=1.75,0.3,2,0",
+      "name": "Cucumber",
+      "count": 12,
+      "size": {
+        "width": 200,
+        "height": 200
+      },
+      "weight": "200g",
+      "comments": []
+    },
+    {
+      "id": 3,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/1200px-Onion_on_White.JPG",
+      "name": "Onion",
+      "count": 1,
+      "size": {
+        "width": 200,
+        "height": 200
+      },
+      "weight": "200g",
+      "comments": [
+        "CommentModel"
+      ]
+    },
+    {
+      "id": 4,
+      "imageUrl": "https://images.heb.com/is/image/HEBGrocery/000377497",
+      "name": "Banana",
+      "count": "8",
+      "size": {
+        "width": "",
+        "height": ""
+      },
+      "weight": "800g",
+      "comments": [],
+      "size.width": "20",
+      "size.height": "100"
+    }
+  ],
+  "comments": [
+    {
+      "id": 3,
+      "productId": 1,
+      "description": "some text here",
+      "date": "14:00 22.08.2021"
+    }
+  ]
+}
