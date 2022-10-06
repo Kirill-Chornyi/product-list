@@ -4,12 +4,12 @@
       "id": 1,
       "imageUrl": "https://fruit-time.ua/images/cache/products/36/pomidor-rozevii-500x500.jpeg",
       "name": "Tomatooeee",
-      "count": "20",
+      "count": 20,
       "size": {
         "width": 200,
         "height": 200
       },
-      "weight": "200g",
+      "weight": "400g",
       "comments": [
         "CommentModel",
         "CommentModel"
@@ -24,8 +24,10 @@
         "width": 200,
         "height": 200
       },
-      "weight": "200g",
-      "comments": []
+      "weight": "100g",
+      "comments": ["CommentModel",
+      "CommentModel", "CommentModel",
+      "CommentModel"]
     },
     {
       "id": 3,
@@ -45,15 +47,13 @@
       "id": 4,
       "imageUrl": "https://images.heb.com/is/image/HEBGrocery/000377497",
       "name": "Banana",
-      "count": "8",
+      "count": 8,
       "size": {
-        "width": "",
-        "height": ""
+        "width": 20,
+        "height": 200
       },
       "weight": "800g",
-      "comments": [],
-      "size.width": "20",
-      "size.height": "100"
+      "comments": []
     }
   ],
   "comments": [

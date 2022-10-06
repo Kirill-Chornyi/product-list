@@ -25,7 +25,7 @@ function App() {
       return res.json();
     })
     .then((data) => {
-      setProductsAction(data)
+      setProductsAction(data.sort((a,b)=> a.name>b.name ? 1 : -1))
     })
     .catch((err) => {
       console.warn(err);

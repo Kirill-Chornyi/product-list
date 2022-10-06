@@ -11,10 +11,10 @@ const productId = useSelector(state=>state.toggle.productId)
     "id": productId,
     "imageUrl": "",
     "name": "",
-    "count": "",
+    "count": 0,
     "size": {
-      "width": "",
-      "height": ""
+      "width": 0,
+      "height": 0
     },
     "weight": "",
     "comments": []
