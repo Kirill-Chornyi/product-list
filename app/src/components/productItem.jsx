@@ -1,22 +1,26 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import {toggleProduct} from '../store/listSlice'
+import {toggleProduct, toggleDelete, toggleEdit} from '../store/listSlice'
 
 const ProductItem = (props) => {
-  // const dispatch = useDispatch()
-  // const toggleProductAction = ()=>{dispatch(toggleProduct)}
+  const dispatch = useDispatch()
+  const toggleProductAction = (prop)=> {dispatch(toggleProduct(prop)); console.log(prop)}
+  const toggleDeleteAction = (prop)=> {dispatch(toggleDelete(prop)); console.log(prop)}
+  const toggleEditAction = (prop)=> {dispatch(toggleEdit(prop)); console.log(prop)}
+
+  
   return (
     <div className='product-item' >
-      <div className='product-item-information' onClick={()=>{props.toggleProduct(props.product)}}>
-        <img src={props.url} width="100"></img>
-        <p> {props.name}</p>
-        <p> Count: {props.count}</p>
-        <p>Comments: {props.comments.length}</p>
+      <div className='product-item-information' onClick={()=>{toggleProductAction(props.product)}}>
+        <img src={props.product.imageUrl} width="100"></img>
+        <p> {props.product.name}</p>
+        <p> Count: {props.product.count}</p>
+        <p> Comments: {props.product.comments.length}</p>
       </div>
       
       <div className='button-container'>
-        <button onClick={()=>{props.toggleEdit(props.product.id)}}>Edit</button>
-        <button onClick={()=>{props.toggleDelete(props.product.id)}}>Delete</button>
+        <button onClick={()=>{toggleEditAction(props.product.id)}}>Edit</button>
+        <button onClick={()=>{toggleDeleteAction(props.product.id)}}>Delete</button>
       </div>
     </div>
   )

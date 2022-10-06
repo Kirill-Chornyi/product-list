@@ -1,26 +1,42 @@
-// import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-// const listSlice = createSlice({
-//     name: 'list',
-//     initialState: {
-//         productId: '',
-//         isProduct: false,
-//         isDelete: false,
-//         isEdit: false,
-//         isAdd: false,
-//         products: [],
-//         product: {},
-//     },
-//     reducers:{
-//         toggleProduct(state, action) {
-//             state.isProduct = !isProduct;
-//             state.product = product;},
-//         toggleDelete(state, action) {},
-//         toggleAdd(state, action) {},
-//         toggleEdit(state, action) {},
-//     }
-// });
+export const toggleSlice = createSlice({
+    name: 'toggle',
+    initialState: {
+        productId: '',
+        isProduct: false,
+        isDelete: false,
+        isEdit: false,
+        isAdd: false,
+        products: [],
+        product: {},
+    },
+    reducers: {
+        setProducts: (state, action) =>{
+            state.products = action.payload
+        },
+        toggleProduct: (state, action) => {
+            state.isProduct = !state.isProduct;
+            state.product = action.payload;},
 
-// export const {toggleProduct, toggleDelete, toggleAdd, toggleEdit} = listSlice.actions;
+        toggleDelete: (state, action) => {
+            state.isDelete = !state.isDelete;
+            state.productId = action.payload;
+        },
+        toggleAdd:(state, action) => { 
+            state.isAdd = !state.isAdd;
+            state.productId = state.products.at(-1).id + 1;   
+},
+        toggleEdit: (state, action) => {
+            state.productId = action.payload;
+            let prodArray = state.products.filter((product)=>{return product.id===action.payload})
+            if (prodArray.length === 1) {state.product = (prodArray[0])}
+            state.isEdit = !state.isEdit;
+        },
+    }
+});
 
-// export const ListReducer=listSlice.reducer;
+export const {toggleProduct, toggleDelete, toggleAdd, toggleEdit, setProducts} = toggleSlice.actions;
+
+export default toggleSlice.reducer;
+

@@ -1,40 +1,22 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {ProductList, Product} from './modules';
 import {DeleteModal,  EditModal, AddModal} from './components';
+import {toggleAdd, setProducts} from './store/listSlice'
 
 function App() {
-  const [productId, setProductId] = useState('')
-  const [isProduct, setIsProduct] = useState(false)
-  const [isDelete, setIsDelete] = useState(false)
-  const [isEdit, setIsEdit] = useState(false)
-  const [isAdd, setIsAdd] = useState(false)
-  const [products, setProducts] = useState([])
-  const [product, setProduct] = useState({})
 
-  function toggleProduct (product) {
-    console.log('Prod')
-    setIsProduct(!isProduct);
-    setProduct(product);
-  }
+  const isEdit = useSelector(state=>state.toggle.isEdit)
+  const isAdd = useSelector(state=>state.toggle.isAdd)
+  const products = useSelector(state=>state.toggle.products)
+  const product = useSelector(state=>state.toggle.product)
+  const isProduct = useSelector(state=>state.toggle.isProduct)
+  const isDelete = useSelector(state=>state.toggle.isDelete)
 
-  function toggleDelete (id) {
-    setIsDelete(!isDelete);
-    setProductId(id);
-  }
-
-  function toggleAdd () {
-    setIsAdd(!isAdd);
-    setProductId(products.at(-1).id + 1);
-  }
-
-  function toggleEdit (id) {
-    setProductId(id);
-    let prodArray = products.filter((product)=>{return product.id===id})
-    if (prodArray.length === 1) {setProduct (prodArray[0])}
-    console.log(product)
-    setIsEdit(!isEdit);
-  }
+  const dispatch = useDispatch()
+  const toggleAddAction = (prop)=> {dispatch(toggleAdd(prop)); console.log(prop)}
+  const setProductsAction = (prop)=> {dispatch(setProducts(prop)); console.log(prop)}
+ 
 
   async function getAPI() {
     const response = await
@@ -43,7 +25,7 @@ function App() {
       return res.json();
     })
     .then((data) => {
-      setProducts(data)
+      setProductsAction(data)
     })
     .catch((err) => {
       console.warn(err);
@@ -66,7 +48,6 @@ function App() {
   }
 
   async function editAPI(updateProduct) {
-    console.log(updateProduct)
     const response = await
     fetch('http://localhost:3001/products/'+updateProduct.id, {method: 'PUT', body: JSON.stringify(updateProduct), 
     headers: {
@@ -76,7 +57,7 @@ function App() {
       return res.json();
     })
     .then((data) => {
-      setProducts(data)
+      setProductsAction(data)
     })
     .catch((err) => {
       console.warn(err);
@@ -86,7 +67,6 @@ function App() {
   }
 
   async function addAPI(updateProduct) {
-    console.log(updateProduct)
     const response = await
     fetch('http://localhost:3001/products', {method: 'POST', body: JSON.stringify(updateProduct), 
     headers: {
@@ -96,7 +76,7 @@ function App() {
       return res.json();
     })
     .then((data) => {
-      setProducts(data)
+      setProductsAction(data)
     })
     .catch((err) => {
       console.warn(err);
@@ -114,35 +94,22 @@ function App() {
 
   return (
     <div className="App">
-       <ProductList 
-       toggleProduct={toggleProduct} 
-       toggleEdit={toggleEdit} 
-       toggleDelete={toggleDelete} 
-       list={products}/>
+       <ProductList />
 
-       <button className='add-product-button' onClick={()=>{toggleAdd()}}>+</button>
+       <button className='add-product-button' onClick={()=>{toggleAddAction()}}>+</button>
 
        {isProduct && (
-       <Product product={product} 
-          toggleEdit={toggleEdit} 
-          toggleDelete={toggleDelete} 
-          toggleProduct={toggleProduct} 
-       />)}
+       <Product />)}
 
        {isDelete && (
-       <DeleteModal toggleDelete={toggleDelete} 
-          deleteAPI={deleteAPI} 
-          productId={productId}/>)}
+       <DeleteModal deleteAPI={deleteAPI} />)}
 
        {isEdit && (
-       <EditModal toggleEdit={toggleEdit} 
-          editAPI={editAPI} 
+       <EditModal  editAPI={editAPI} 
           product={product}/>)}
 
        {isAdd && (
-       <AddModal toggleAdd={toggleAdd} 
-          addAPI={addAPI} 
-          productId={productId}/>)}
+       <AddModal  addAPI={addAPI} />)}
        
     </div>
   );

@@ -1,9 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
 import product from '../modules/product'
+import { useSelector, useDispatch } from 'react-redux'
+import {toggleEdit} from '../store/listSlice'
 
 const EditModal = (props) => {
-  const [updateProduct, setUpdateProduct] = useState(props.product)
+  const product = useSelector(state=>state.toggle.product)
+  const [updateProduct, setUpdateProduct] = useState(product)
+  const dispatch = useDispatch()
+  const toggleEditAction = (prop)=> {dispatch(toggleEdit(prop)); console.log(prop)}
 
   function handleChange (key, value) {
     let property = {}
@@ -22,11 +27,11 @@ const EditModal = (props) => {
   return (
     <div className="overlay">
         <div className="modal">
-          <svg onClick={()=>{props.toggleEdit('')}} height="200" viewBox="0 0 200 200" width="200">
+          <svg onClick={()=>{toggleEditAction('')}} height="200" viewBox="0 0 200 200" width="200">
             <title />
             <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
           </svg>
-          <p className='edit-label'>{props.product.name}</p>
+          <p className='edit-label'>{product.name}</p>
           <form className='edit-form'>
             <div>
               <label htmlFor="input1">Name:  </label> <input name="name" type="text" value={updateProduct.name} id="input1" onChange={()=>{handleChange ( document.querySelector("#input1").name, document.querySelector("#input1").value)}}/> 
@@ -52,7 +57,7 @@ const EditModal = (props) => {
         
           <div className='edit-button-container'>
             <button onClick={()=>{props.editAPI(updateProduct)}}> Save </button>
-            <button onClick={()=>{props.toggleEdit('')}}> Go back >> </button>
+            <button onClick={()=>{toggleEditAction('')}}> Go back >> </button>
           </div>
           </form>
         </div>

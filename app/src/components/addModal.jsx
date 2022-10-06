@@ -1,10 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import {toggleAdd} from '../store/listSlice'
 import product from '../modules/product'
 
 const AddModal = (props) => {
+const productId = useSelector(state=>state.toggle.productId)
+
   const [updateProduct, setUpdateProduct] = useState({
-    "id": props.productId,
+    "id": productId,
     "imageUrl": "",
     "name": "",
     "count": "",
@@ -15,6 +19,9 @@ const AddModal = (props) => {
     "weight": "",
     "comments": []
   })
+
+  const dispatch = useDispatch()
+  const toggleAddAction = (prop)=> {dispatch(toggleAdd(prop)); console.log(prop)}
 
   function handleChange (key, value) {
     let property = {}
@@ -33,7 +40,7 @@ const AddModal = (props) => {
   return (
     <div className="overlay">
         <div className="modal">
-          <svg onClick={()=>{props.toggleAdd('')}} height="200" viewBox="0 0 200 200" width="200">
+          <svg onClick={()=>{toggleAddAction('')}} height="200" viewBox="0 0 200 200" width="200">
             <title />
             <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
           </svg>
@@ -64,7 +71,7 @@ const AddModal = (props) => {
         
           <div className='edit-button-container'>
             <button onClick={()=>{props.addAPI(updateProduct)}}> Save </button>
-            <button onClick={()=>{props.toggleAdd('')}}> Go back >> </button>
+            <button onClick={()=>{toggleAddAction('')}}> Go back >> </button>
           </div>
           </form>
         </div>

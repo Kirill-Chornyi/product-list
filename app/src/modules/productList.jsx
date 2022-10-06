@@ -1,25 +1,19 @@
 import React from 'react'
 import { ProductItem } from '../components'
+import { useSelector, useDispatch } from 'react-redux';
 
-const productList = (props) => {
 
+const ProductList = (props) => {
+  const products = useSelector(state=>state.toggle.products)
   return (
     <div className='product-list'>
-      {props.list.map(product => (
+      {products.map(product => (
         <ProductItem
-            toggleDelete={props.toggleDelete}
-            toggleEdit={props.toggleEdit}
-            toggleProduct={props.toggleProduct}
             key={product.id}
-            url={product.imageUrl}
-            name={product.name}
-            count={product.count}
-            comments={product.comments}
-            product={product}
-            />
+            product={product}  />
         ))}
     </div>
   )
 }
 
-export default productList
+export default ProductList
